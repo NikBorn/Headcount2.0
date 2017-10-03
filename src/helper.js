@@ -1,29 +1,34 @@
 export default class DistrictRepository {
-    constructor(array) {
-        this.data = this.createDataObj(array)
+    constructor(data) {
+        this.data = this.createDataObj(data)
     }
 
     createDataObj(array) {
         return array.reduce((accu, current) => {
             if(!accu[current.Location]) {
-                accu[current.Location] = {location: current.Location.toUpperCase(), data: {}}
+                accu[current.Location] = {
+                    location: current.Location.toUpperCase(), 
+                    data: {}
+                }
             }
-            accu[current.Location].data[current.TimeFrame] = current.Data;
+            accu[current.Location].data[current.TimeFrame] = this.roundNumber(current.Data, 3);
             return accu
-            }, {})
+            }, {})        
         }
 
-    findByName(name) {
-        if (name) {
+    findByName(searchName) {
+        if (searchName) {
             let keys = Object.keys(this.data)
-            let found = keys.find(location => location.toUpperCase() === name.toUpperCase())
-            console.log(this.data[found])
+            let found = keys.find(location => location.toUpperCase() === searchName.toUpperCase())
             return this.data[found]
         }
         }
 
-
-
-
+    roundNumber(value, decimals) {
+        if ((typeof value) !== 'number') {
+            return 0
+        }
+        return Number(Math.round(value+'e'+decimals)+'e-'+decimals);
+        }
 
 }
