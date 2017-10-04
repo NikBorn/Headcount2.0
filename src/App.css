@@ -1,105 +1,143 @@
 /*APP COMPONENT RELATED CSS GOES HERE*/
 *, *:before, *:after {
-    box-sizing: border-box;
-    margin: 0px;
-    padding: 0px;
+  box-sizing: border-box;
+  margin: 0px;
+  padding: 0px;
+}
+
+html {
+    width: 100vw;
+    color: #F8F7F6;
+}
+
+body {
+    width: 100vw;
+    background-color: rgba(212, 212, 211, 0.81);
 }
 
 header {
-    width: 100%;
-    height: 50px;
-    background-color: magenta;
+  width: 100%;
+  height: 46px;
+  background-color: magenta;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  background-color: #1B44A6;
 }
 
 .graph-catalog {
-    width: 100%;
-    height: auto;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around
+  margin-top: 50px;
+  width: 100vw;
+  height: auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
 }
 
 .graph-card {
-    width: 32%;
-    border: 2px solid black;
-    margin: 10px 0px 0 0;
-    text-align: center;
-    height: 320px;
-    padding: 0 10px 10px 0;
-    /* display: flex; */
-    /* background-color: lightgray */
-}
-
-svg {
-    margin-top: -40px;
-    display: inline-block;
+  width: 19%;
+  border: 2px solid #1B44A6;
+  margin: 10px 0px 0 0;
+  text-align: center;
+  height: 312px;
+  /* padding: 0 10px 10px 0; */
+  /* display: flex; */
+  /* background-color: lightgray */
+  overflow: hidden;
+  background-color: #4578DA;
 }
 
 div {
-    display: inline-block
+  display: inline-block
 }
 
 .district-table {
-    border: 1px solid black;
-    font-size: 16px;
-    padding: 0 1px 0 1px;
-    background-color: white;
-    display: flex;
-    width: 92px;
+  border: 1px solid #1B44A6;
+  font-size: 16px;
+  padding: 0 1px 0 1px;
+  background-color: #F8F7F6;
+  display: flex;
+  width: 100%;
 }
 
 .table-header {
-    display: inline-block;
-    /* border: 1px solid black; */
-    text-align: center;
-    border-right: 1px solid black;
-    width: 46px;
-    margin: 0 auto;
+  display: inline-block;
+  /* border: 1px solid black; */
+  text-align: center;
+  border-right: 1px solid black;
+  width: 70px;
+  margin: 0 auto;
+  padding: 2px;
+  color: black;
+  font-weight: bold;
 }
 
 .table-below {
-    text-align: center;
-    display: inline-block;
-    color: red;
-    margin: 0 auto;
-    width: 46px;
+  text-align: center;
+  display: inline-block;
+  color: red;
+  margin: 0 auto;
+  width: 70px;
+  padding: 2px;  
+  font-weight: bold;  
 }
 
 .table-above {
-    text-align: center;
-    display: inline-block;
-    color: green;
-    margin: 0 auto;
-    width: 46px;
+  text-align: center;
+  display: inline-block;
+  color: green;
+  margin: 0 auto;
+  width: 70px;
+  padding: 2px; 
+  font-weight: bold;  
 }
 
 article {
-    /* margin: 0 auto; */
-    display: inline-block;
-    /* margin-top: -20px; */
+  /* margin: 0 auto; */
+  display: inline-block;
+  margin-top: 10px;
 }
 
 .chart {
-    display: inline-block;
+  display: inline-block;
 }
 
 .card-body {
-    margin-top: 20px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: white;
-}
-
-.search-section {
-    width: 100%;
-    border: 1 px soldid magenta;
-    background-color: lightblue;
-    text-align: center;
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: white;
 }
 
 input {
-    height: 30px;
-    width: 300px;
-    font-size: 16px;
+  height: 30px;
+  width: 300px;
+  font-size: 16px;
+  /* position: absolute; */
+  display: inline-block;
+  /* vertical-align: middle; */
+  background-color: #F8F7F6;
+  padding-left: 5px;
 }
+
+h1 {
+    display: inline-block;
+    margin-right: 20px;
+    /* margin: 4px 0 0 10px; */
+    /* vertical-align: middle; */
+}
+
+.card-header {
+    padding: 4px 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: block;
+    background-color: grey;
+    width: 100%;
+    height: 24px;
+    background-color: #72C9F0;
+    color: black;
+}
+
