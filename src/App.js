@@ -15,6 +15,7 @@ class App extends Component {
     this.state = {
       schoolDistricts: districtObj.findAllMatches()
     };
+    this.searchForDistricts =this.searchForDistricts.bind(this)
   }
 
   searchForDistricts(searchTerm) {
@@ -25,15 +26,11 @@ class App extends Component {
     });
   }
 
- 
-
-
   render() {
     return (
       <div>
-        <Header />
-        <Searchbar searchForDistricts={ this.searchForDistricts.bind(this) }/>
-        <GraphCatalog schoolDistricts={this.state.schoolDistricts} />
+        <Header searchForDistricts={ this.searchForDistricts } />
+        <GraphCatalog schoolDistricts={ this.state.schoolDistricts } />
       </div>            
     );
   }
