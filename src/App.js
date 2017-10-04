@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import './App.css';
 import DistrictRepository from './helper.js';
-import header from './components/Header.js';
+import Header from './components/Header.js';
 import GraphCatalog from './components/GraphCatalog.js';
+import Searchbar from './components/Searchbar.js';
 
 import kindergarten from '../data/kindergartners_in_full_day_program.js';
 
@@ -16,10 +17,20 @@ class App extends Component {
     }
   }
 
+  searchForDistricts(searchTerm) {
+    this.setState({
+      schoolDistricts: districtObj.findAllMatches(searchTerm)
+    })
+  }
+
+ 
+
+
   render() {
     return (
       <div>
-        <header />
+        <Header />
+        <Searchbar searchForDistricts={ this.searchForDistricts.bind(this) }/>
         <GraphCatalog schoolDistricts={this.state.schoolDistricts} />
       </div>            
     )
