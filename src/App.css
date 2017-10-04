@@ -7,7 +7,7 @@
 
 header {
     width: 100%;
-    height: 100px;
+    height: 50px;
     background-color: magenta;
 }
 
@@ -57,10 +57,18 @@ div {
     margin: 0 auto;
 }
 
-.table-footer {
+.table-below {
     text-align: center;
     display: inline-block;
     color: red;
+    margin: 0 auto;
+    width: 46px;
+}
+
+.table-above {
+    text-align: center;
+    display: inline-block;
+    color: green;
     margin: 0 auto;
     width: 46px;
 }
@@ -81,4 +89,17 @@ article {
     justify-content: space-between;
     align-items: center;
     background-color: white;
+}
+
+.search-section {
+    width: 100%;
+    border: 1 px soldid magenta;
+    background-color: lightblue;
+    text-align: center;
+}
+
+input {
+    height: 30px;
+    width: 300px;
+    font-size: 16px;
 }

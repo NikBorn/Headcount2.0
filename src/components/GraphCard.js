@@ -12,13 +12,14 @@ const GraphCard = ( { districtData, districtLocation } ) => {
         return { data: districtData[key]}
     })
     let districtInfo = keys.map((key, i)=>{
+        let stylez = districtData[key] < .5 ? 'table-below' : 'table-above'
         return <div className='district-table'>
                  
                      <div className='table-header'>
                         { key }
                      </div>
                
-                     <div className='table-footer'>
+                     <div className={ stylez }>
                         { districtData[key] }
                     </div>
               
@@ -38,7 +39,7 @@ const GraphCard = ( { districtData, districtLocation } ) => {
                     tickFormat={["'04", "'06", "'08", "'10", "'12", "'14"]}/>
                 <VictoryAxis    
                     dependentAxis
-                    tickValues={[0, .2, .4, .6, .8, 1]}
+                    tickValues={[0, .2, .4, .7, .8, 1]}
                     /> 
                 <VictoryLine
                     labels={(d) => d.y}
