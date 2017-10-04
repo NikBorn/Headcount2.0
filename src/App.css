@@ -1,8 +1,80 @@
 /*APP COMPONENT RELATED CSS GOES HERE*/
-
+*, *:before, *:after {
+    box-sizing: border-box;
+    margin: 0px;
+    padding: 0px;
+}
 
 header {
     width: 100%;
-    height: 200px;
+    height: 100px;
     background-color: magenta;
+}
+
+.graph-catalog {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around
+}
+
+.graph-card {
+    width: 32%;
+    border: 2px solid black;
+    margin: 10px 0px 0 0;
+    text-align: center;
+    height: 340px;
+    padding: 0 10px 10px 0;
+    /* display: flex; */
+    background-color: lightgray
+}
+
+svg {
+    margin-top: -40px;
+    display: inline-block;
+}
+
+div {
+    display: inline-block
+}
+
+.district-table {
+    border: 1px solid black;
+    font-size: 16px;
+    padding: 0 1px 0 1px;
+    background-color: white;
+    display: flex;
+}
+
+.table-header {
+    display: inline-block;
+    /* border: 1px solid black; */
+    margin: 2px;
+    border-right: 1px soldi black;
+    width: 40px;
+}
+
+.table-footer {
+    margin: 2px;
+    display: inline-block;
+    color: red;
+}
+
+article {
+    /* margin: 0 auto; */
+    display: inline-block;
+    /* margin-top: -20px; */
+}
+
+.chart {
+    display: inline-block;
+}
+
+.card-body {
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: white;
 }
