@@ -14,13 +14,15 @@ class App extends Component {
     super()
     this.state = {
       schoolDistricts: districtObj.findAllMatches()
-    }
+    };
   }
 
   searchForDistricts(searchTerm) {
+    console.log('Hit!')
+    console.log(searchTerm)
     this.setState({
       schoolDistricts: districtObj.findAllMatches(searchTerm)
-    })
+    });
   }
 
  
@@ -33,7 +35,7 @@ class App extends Component {
         <Searchbar searchForDistricts={ this.searchForDistricts.bind(this) }/>
         <GraphCatalog schoolDistricts={this.state.schoolDistricts} />
       </div>            
-    )
+    );
   }
 }
 

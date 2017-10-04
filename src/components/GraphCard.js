@@ -29,34 +29,35 @@ const GraphCard = ( { districtData, districtLocation } ) => {
     return(
         <div className='graph-card'>
             <h3>{ districtLocation }</h3>
-            <div className='card-body'>
-                <div className='chart'>
-                <VictoryChart 
-                    className='victory-chart'
-                    theme={VictoryTheme.material}>
-                <VictoryAxis
-                    tickValues={[0, 2, 4, 6, 8, 10]}
-                    tickFormat={["'04", "'06", "'08", "'10", "'12", "'14"]}/>
-                <VictoryAxis    
-                    dependentAxis
-                    tickValues={[0, .2, .4, .7, .8, 1]}
-                    /> 
-                <VictoryLine
-                    labels={(d) => d.y}
-                    labelComponent={<VictoryTooltip/>}
-                    style={{
-                    data: { stroke: "#c43a31" },
-                    parent: { border: "1px solid #ccc"}}}  
-                    data={graphInfoData} x="year" y="data" label='automatically'
-                />
-                </VictoryChart>
-                </div>
+           
+                
                 <article>
                     { districtInfo }
                 </article>
-            </div>
         </div>
     )
 }
 
 export default GraphCard;
+
+
+
+{/* <div className='card-body'>
+<div className='chart'>
+<VictoryChart 
+    className='victory-chart'
+    theme={VictoryTheme.material}>
+<VictoryAxis
+    tickValues={[0, 2, 4, 6, 8, 10]}
+    tickFormat={["'04", "'06", "'08", "'10", "'12", "'14"]}/>
+<VictoryAxis    
+    dependentAxis
+    tickValues={[0, .2, .4, .7, .8, 1]}
+    /> 
+<VictoryLine
+    style={{
+    data: { stroke: "#c43a31" },
+    parent: { border: "1px solid #ccc"}}}  
+    data={graphInfoData} x="year" y="data" 
+/>
+</VictoryChart> */}
