@@ -24,10 +24,10 @@ header {
     border: 2px solid black;
     margin: 10px 0px 0 0;
     text-align: center;
-    height: 340px;
+    height: 320px;
     padding: 0 10px 10px 0;
     /* display: flex; */
-    background-color: lightgray
+    /* background-color: lightgray */
 }
 
 svg {
@@ -45,20 +45,24 @@ div {
     padding: 0 1px 0 1px;
     background-color: white;
     display: flex;
+    width: 92px;
 }
 
 .table-header {
     display: inline-block;
     /* border: 1px solid black; */
-    margin: 2px;
-    border-right: 1px soldi black;
-    width: 40px;
+    text-align: center;
+    border-right: 1px solid black;
+    width: 46px;
+    margin: 0 auto;
 }
 
 .table-footer {
-    margin: 2px;
+    text-align: center;
     display: inline-block;
     color: red;
+    margin: 0 auto;
+    width: 46px;
 }
 
 article {
