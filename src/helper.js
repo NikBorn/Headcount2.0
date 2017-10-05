@@ -3,12 +3,24 @@ export default class DistrictRepository {
     this.data = this.createDataObj(data);
   };
 
-  compareDistrictAverages(district1, district2) {
-    // console.log(district1, district2)
+  compareDistrictAverages(dist1, dist2) {
+    console.log(dist1, dist2)
+    let district1 = this.findByName(dist1)
+    let district2 = this.findByName(dist2)
+    
     let avg1=this.findAverage(district1.location)
     let avg2=this.findAverage(district2.location)
-    console.log(avg1, avg2)
-
+    let comparedAvg=avg1/avg2
+    console.log(comparedAvg)
+    let avgObj = {
+      [district1.location]: avg1,
+      [district2.location]: avg2,
+      'compared': this.roundNumber(comparedAvg, 3)
+    }
+    console.log(avgObj)
+    return avgObj;
+    
+    // { "ACADEMY 20": 0.407, "YUMA SCHOOL DISTRICT 1": 0.909, "compared": 0.448 }
   }
 
   findAverage(location) {

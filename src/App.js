@@ -26,12 +26,12 @@ class App extends Component {
     let updatedCompare = this.state.districtsToCompare
     updatedCompare.push(selectedDistrict)
     if (this.state.districtsToCompare.length > 1) {
-      districtObj.compareDistrictAverages(updatedCompare[0], updatedCompare[1])      
+      districtObj.compareDistrictAverages(updatedCompare[0].location, updatedCompare[1].location)      
     }
     
     if (this.state.districtsToCompare.length > 2) {
       updatedCompare.shift()
-      districtObj.compareDistrictAverages(updatedCompare[0], updatedCompare[1])
+      districtObj.compareDistrictAverages(updatedCompare[0].location, updatedCompare[1].location)
     }
 
     // updatedCompare.push(selectedDistrict)
