@@ -1,15 +1,20 @@
 import React from 'react';
 import GraphCard from './GraphCard.js'
 
-const GraphCatalog = ( { schoolDistricts } ) => {
+const GraphCatalog = ( { schoolDistricts, handleSelected } ) => {
 
     
     
-    let districtGraphs = schoolDistricts.map( district =>{
-        return(
-            <GraphCard key={ district.id } districtData={ district.data } districtLocation={ district.location }/>
-        )
-    })
+  let districtGraphs = schoolDistricts.map( district =>{
+    return (
+      <GraphCard districtData={ district.data } 
+                 districtLocation={ district.location }
+                 handleSelected={ handleSelected }
+                 id={ district.id } 
+                 key={ district.id } 
+                 />
+    );
+  });
 
     return(
         <div className='graph-catalog'>
