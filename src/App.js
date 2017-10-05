@@ -22,13 +22,21 @@ class App extends Component {
   handleSelected(id) {
     let selectedDistrict = this.state.schoolDistricts.filter(district => {
       return district.id === id
-    })[0]
+    })[0]   
     let updatedCompare = this.state.districtsToCompare
-    if (this.state.districtsToCompare.length > 1) {
-      updatedCompare.shift()
-    }
     updatedCompare.push(selectedDistrict)
-    console.log(updatedCompare)
+    if (this.state.districtsToCompare.length > 1) {
+      districtObj.compareDistrictAverages(updatedCompare[0], updatedCompare[1])      
+    }
+    
+    if (this.state.districtsToCompare.length > 2) {
+      updatedCompare.shift()
+      districtObj.compareDistrictAverages(updatedCompare[0], updatedCompare[1])
+    }
+
+    // updatedCompare.push(selectedDistrict)
+    this.setState({ districtsToCompare: updatedCompare})
+    // console.log(updatedCompare)
   }
 
   searchForDistricts(searchTerm) {
