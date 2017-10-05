@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 // import { VictoryBar, VictoryChart, VictoryAxis, VictoryLine, VictoryTheme, VictoryTooltip } from 'victory';
 
-const GraphCard = ( { districtData, districtLocation } ) => {
+const GraphCard = ( { districtData, districtLocation, handleSelected, id } ) => {
   let keys = Object.keys(districtData)
   let districtInfo = keys.map((key, i)=>{
     let stylez = districtData[key] < .5 ? 'table-below' : 'table-above'
@@ -15,9 +15,13 @@ const GraphCard = ( { districtData, districtLocation } ) => {
              </div>
            </div>
     })
-
   return (
-    <div className='graph-card'>
+    <div className='graph-card' 
+         key={ id }
+         onClick={(e)=>{
+           e.preventDefault();
+           handleSelected(id);
+         }}>
       <div className='card-header'>
         <h4>{ districtLocation }</h4> 
       </div>

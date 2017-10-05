@@ -3,6 +3,10 @@ export default class DistrictRepository {
     this.data = this.createDataObj(data);
   };
 
+  compareDistrictAverages(district1, district2) {
+    console.log(district1, district2)
+  }
+
   createDataObj(array) {
     return array.reduce((accu, current, i) => {
       if (!accu[current.Location]) {
