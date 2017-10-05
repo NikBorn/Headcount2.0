@@ -19,10 +19,25 @@ class App extends Component {
     this.handleSelected = this.handleSelected.bind(this)
   }
 
-  handleSelected(id) {
-    let selectedDistrict = this.state.schoolDistricts.filter(district => {
-      return district.id === id
-    })[0]   
+
+  toggleSelected(name) {
+    let updatedState = this.state.schoolDistricts.slice()
+    console.log('updatedState: ', updatedState)
+    let selectedCard = districtObj.findByName(name)
+    selectedCard.isSelected = !selectedCard.isSelected
+    let selectedIndex = updatedState.indexOf(selectedCard)
+    console.log('index; ', selectedIndex)
+    console.log('selected: ',selectedCard)
+    updatedState.splice(selectedIndex, 1, selectedCard)
+    this.setState({
+      schoolDistricts: updatedState
+    })
+    // updatedState.
+  }
+
+  handleSelected(name) {
+    this.toggleSelected(name)
+    let selectedDistrict = districtObj.findByName(name)
     let updatedCompare = this.state.districtsToCompare
     updatedCompare.push(selectedDistrict)
     if (this.state.districtsToCompare.length > 1) {

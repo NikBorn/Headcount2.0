@@ -1,12 +1,12 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+// import ReactDOM from 'react-dom';
 // import { VictoryBar, VictoryChart, VictoryAxis, VictoryLine, VictoryTheme, VictoryTooltip } from 'victory';
 
 const GraphCard = ( { districtData, districtLocation, handleSelected, id } ) => {
   let keys = Object.keys(districtData)
   let districtInfo = keys.map((key, i)=>{
     let stylez = districtData[key] < .5 ? 'table-below' : 'table-above'
-    return <div className='district-table'>
+    return <div className='district-table' key={Date.now()+i}>
              <div className='table-header'>
                { key }
              </div>
@@ -20,7 +20,7 @@ const GraphCard = ( { districtData, districtLocation, handleSelected, id } ) => 
          key={ id }
          onClick={(e)=>{
            e.preventDefault();
-           handleSelected(id);
+           handleSelected(districtLocation);
          }}>
       <div className='card-header'>
         <h4>{ districtLocation }</h4> 
@@ -36,7 +36,7 @@ export default GraphCard;
 
 
 
-{/* <div className='card-body'>
+/* <div className='card-body'>
 <div className='chart'>
 <VictoryChart 
     className='victory-chart'
@@ -54,7 +54,7 @@ export default GraphCard;
     parent: { border: "1px solid #ccc"}}}  
     data={graphInfoData} x="year" y="data" 
 />
-</VictoryChart> */}
+</VictoryChart> */
 
 // let graphInfo = keys.map(key=>{
 //     return { year: key,

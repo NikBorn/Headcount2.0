@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-
+import React from 'react';
+// , { Component }
 // export default class Searchbar extends Component {
 //   constructor() {
 //     super();
