@@ -12,6 +12,7 @@ const GraphCatalog = ( { schoolDistricts, handleSelected } ) => {
                  handleSelected={ handleSelected }
                  id={ district.id } 
                  key={ district.id } 
+                 isSelected={ district.isSelected }
                  />
     );
   });

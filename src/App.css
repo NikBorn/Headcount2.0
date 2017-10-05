@@ -41,11 +41,18 @@ header {
   margin: 10px 0px 0 0;
   text-align: center;
   height: 312px;
-  /* padding: 0 10px 10px 0; */
-  /* display: flex; */
-  /* background-color: lightgray */
   overflow: hidden;
   background-color: #4578DA;
+}
+
+.card-selected {
+  width: 19%;
+  border: 2px solid #1B44A6;
+  margin: 10px 0px 0 0;
+  text-align: center;
+  height: 312px;
+  overflow: hidden;
+  background-color: red;
 }
 
 div {

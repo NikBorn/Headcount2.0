@@ -1,38 +1,42 @@
-import React from 'react';
-// , { Component }
-// export default class Searchbar extends Component {
-//   constructor() {
-//     super();
-//     this.state = {
-//       value: ''
-//     };
-//   }
+import React, { Component } from 'react';
 
-//   render() {
-//     return (
+export default class Searchbar extends Component {
+  constructor() {
+    super();
+    this.state = {
+      value: ''
+    };
+  }
+
+  handleChange(string) {
+    this.setState({ value: string }, ()=>{this.props.searchForDistricts(this.state.value)})
+  }
+
+  render(props) {
+    return (
       
-//         <input className='search-bar'
-//                placeholder='search by district'
-//                onChange={(e)=>{
-//                  e.preventDefault();
-//                  this.props.searchForDistricts(e.target.value)
-//                }} />
+        <input className='search-bar'
+               placeholder='search by district'
+               value={this.state.value}
+               onChange={(e)=>{
+                 this.handleChange(e.target.value)
+               }} />
       
-//     );
-//   }
-// };
+    );
+  }
+};
 
-const Searchbar = ({ searchForDistricts }) => {
-  return (
+// const Searchbar = ({ searchForDistricts }) => {
+//   return (
     
-      <input className='search-bar'
-             placeholder='search by district'
-             onChange={(e)=>{
-               e.preventDefault();
-               searchForDistricts(e.target.value)
-             }} />
+//       <input className='search-bar'
+//              placeholder='search by district'
+//              onChange={(e)=>{
+//                e.preventDefault();
+//                searchForDistricts(e.target.value)
+//              }} />
     
-  );
-}
+//   );
+// }
 
-export default Searchbar;
+// export default Searchbar;
