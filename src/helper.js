@@ -45,7 +45,8 @@ export default class DistrictRepository {
         accu[current.Location] = {
           location: current.Location.toUpperCase(), 
           data: {},
-          id: Date.now()+i
+          id: Date.now()+i,
+          isSelected: false,         
         };
       }
       accu[current.Location].data[current.TimeFrame] = this.roundNumber(current.Data, 3);
