@@ -4,14 +4,11 @@ export default class DistrictRepository {
   };
 
   compareDistrictAverages(dist1, dist2) {
-    console.log(dist1, dist2)
-    let district1 = this.findByName(dist1)
-    let district2 = this.findByName(dist2)
-    
+    let district1 = this.findByName(dist1);
+    let district2 = this.findByName(dist2);
     let avg1=this.findAverage(district1.location)
     let avg2=this.findAverage(district2.location)
     let comparedAvg=avg1/avg2
-    console.log(comparedAvg)
     let avgObj = {
       [district1.location]: avg1,
       [district2.location]: avg2,
@@ -19,23 +16,18 @@ export default class DistrictRepository {
     }
     console.log(avgObj)
     return avgObj;
-    
-    // { "ACADEMY 20": 0.407, "YUMA SCHOOL DISTRICT 1": 0.909, "compared": 0.448 }
   }
 
   findAverage(location) {
     let district = this.findByName(location)
     let keys = Object.keys(district.data)
-    // console.log(keys)
     let valuesArray = keys.map(key => {
         return district.data[key]
     })
-    // console.log(valuesArray)
     let total = valuesArray.reduce((accu, current)=> {
       return accu + current;
     }, 0);
     let avg = total/11;
-    // console.log(this.roundNumber(avg, 3))
     return this.roundNumber(avg, 3);
   }
 

@@ -15,7 +15,6 @@ const GraphCard = ( { districtData, districtLocation, handleSelected, id, isSele
              </div>
            </div>
     })
-    console.log('props:', isSelected)
     let cardStyle = isSelected ? 'card-selected' : 'graph-card'
   return (
     <div className={ cardStyle }
