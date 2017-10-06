@@ -17,11 +17,11 @@ const GraphCatalog = ( { schoolDistricts, handleSelected } ) => {
     );
   });
 
-    return(
+  return(
         <div className='graph-catalog'>
             { districtGraphs }
         </div>
-    )
+  );
 }
 
 export default GraphCatalog;

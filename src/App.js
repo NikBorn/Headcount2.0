@@ -3,6 +3,7 @@ import './App.css';
 import DistrictRepository from './helper.js';
 import Header from './components/Header.js';
 import GraphCatalog from './components/GraphCatalog.js';
+import CompareDisplay from './components/CompareDisplay.js'
 
 import kindergarten from '../data/kindergartners_in_full_day_program.js';
 
@@ -33,25 +34,21 @@ class App extends Component {
   handleSelected(name) {
     this.toggleSelected(name)
     let selectedDistrict = districtObj.findByName(name)
-    let updatedCompare = this.state.districtsToCompare
-    updatedCompare.push(selectedDistrict)
-    if (this.state.districtsToCompare.length > 1) {
-      districtObj.compareDistrictAverages(updatedCompare[0].location, updatedCompare[1].location)      
-    }
-    if (this.state.districtsToCompare.length > 2) {
-      let removedCard = updatedCompare[0]
-      this.toggleSelected(removedCard.location)
-      console.log('remove: ',removedCard)
+    let updatedCompare = [...this.state.districtsToCompare, selectedDistrict]
+    
+    if (updatedCompare.length > 2) {
+      let removedCard = updatedCompare[0];
+      this.toggleSelected(removedCard.location);
       updatedCompare.shift()
-      districtObj.compareDistrictAverages(updatedCompare[0].location, updatedCompare[1].location)
     }
-
-    this.setState({ districtsToCompare: updatedCompare})
+    
+    if (updatedCompare.length === 2) {
+      districtObj.compareDistrictAverages(updatedCompare[0].location, updatedCompare[1].location) 
+    }
+    this.setState({ districtsToCompare: updatedCompare })
   }
 
   searchForDistricts(searchTerm) {
-    console.log('Hit!')
-    console.log(searchTerm)
     this.setState({
       schoolDistricts: districtObj.findAllMatches(searchTerm)
     });
@@ -61,6 +58,7 @@ class App extends Component {
     return (
       <div>
         <Header searchForDistricts={ this.searchForDistricts } />
+        <CompareDisplay />
         <GraphCatalog schoolDistricts={ this.state.schoolDistricts }
                       handleSelected={ this.handleSelected } />
       </div>            
