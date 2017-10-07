@@ -18,7 +18,12 @@ class App extends Component {
     };
     this.searchForDistricts = this.searchForDistricts.bind(this)
     this.handleSelected = this.handleSelected.bind(this)
+    this.fetchCompareObj = this.fetchCompareObj.bind(this)
     
+  }
+
+  fetchCompareObj(dist1, dist2) {
+    return districtObj.compareDistrictAverages(dist1, dist2)
   }
 
   toggleSelected(name) {
@@ -42,20 +47,16 @@ class App extends Component {
     let selectedDistrict = districtObj.findByName(name);
     let compareState = [...this.state.districtsToCompare];
     let addToCompare = [...compareState, selectedDistrict];
-    let removeCompare = addToCompare.filter( card => card.location !== selectedDistrict.location);
-    // let shiftCompare = addToCompare.filter(card => card !== compareState[0]);
+    let removeCompare = addToCompare.filter( card => 
+      card.location !== selectedDistrict.location);
     let returnCompare = [];
+    let doesStateHaveDist = compareState.includes(selectedDistrict)
     
     if (addToCompare.length > 2 ) {
-      console.log()
-      returnCompare = compareState.includes(selectedDistrict) ? removeCompare : this.shiftCompare(addToCompare);
-      
-      console.log(returnCompare)
+      returnCompare = doesStateHaveDist ? removeCompare : this.shiftCompare(addToCompare);
     }
-
     if (addToCompare.length <= 2) {
       returnCompare = addToCompare;
-      console.log(returnCompare)
     }
 
     this.setState({ districtsToCompare: returnCompare })
@@ -73,12 +74,12 @@ class App extends Component {
       <div>
         <Header searchForDistricts={ this.searchForDistricts } />
         {this.state.districtsToCompare.length && 
-          <CompareDisplay compareObj={this.state.compareObj}
-                        compareArray={this.state.districtsToCompare}
-                      handleSelected={this.handleSelected}  />}
+          <CompareDisplay fetchCompareObj={this.fetchCompareObj}
+                                compareArray={this.state.districtsToCompare}
+                              handleSelected={this.handleSelected}  />}
         
         <GraphCatalog schoolDistricts={ this.state.schoolDistricts }
-                      handleSelected={ this.handleSelected } />
+                       handleSelected={ this.handleSelected } />
       </div>            
     );
   }

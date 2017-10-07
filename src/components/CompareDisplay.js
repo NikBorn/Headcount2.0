@@ -2,7 +2,7 @@ import React from 'react';
 import GraphCard from './GraphCard.js';
 import FullCompareSection from './FullCompareSection.js'
 
-const CompareDisplay = ({ compareArray, compareObj, handleSelected} ) => {
+const CompareDisplay = ({ compareArray, fetchCompareObj, handleSelected} ) => {
     // console.log('compareArray', compareArray.length)
     // console.log('compareObj: ', compareObj)
     let dist1 = compareArray[0]
@@ -15,7 +15,7 @@ const CompareDisplay = ({ compareArray, compareObj, handleSelected} ) => {
           {compareArray.length === 2 &&
               <FullCompareSection    district1={dist1}
                                      district2={dist2}
-                                    compareObj={compareObj} 
+                       fetchCompareObj={fetchCompareObj} 
                                 handleSelected={handleSelected}/>
           }
 
