@@ -3,21 +3,27 @@ import './App.css';
 import DistrictRepository from './helper.js';
 import Header from './components/Header.js';
 import GraphCatalog from './components/GraphCatalog.js';
-import CompareDisplay from './components/CompareDisplay.js'
-
+import CompareDisplay from './components/CompareDisplay.js';
 import kindergarten from '../data/kindergartners_in_full_day_program.js';
 
 let districtObj = new DistrictRepository(kindergarten)
 
 class App extends Component {
   constructor() {
-    super()
+    super();
     this.state = {
       schoolDistricts: districtObj.findAllMatches(),
-      districtsToCompare: []
+      districtsToCompare: [],
+      compareObj: {}
     };
     this.searchForDistricts = this.searchForDistricts.bind(this)
     this.handleSelected = this.handleSelected.bind(this)
+    this.fetchCompareObj = this.fetchCompareObj.bind(this)
+    
+  }
+
+  fetchCompareObj(dist1, dist2) {
+    return districtObj.compareDistrictAverages(dist1, dist2)
   }
 
   toggleSelected(name) {
@@ -31,21 +37,29 @@ class App extends Component {
     })
   }
 
+  shiftCompare(array) {
+    this.toggleSelected(array[0].location)
+    return array.filter(card => card !== array[0]);
+  }
+
   handleSelected(name) {
     this.toggleSelected(name)
-    let selectedDistrict = districtObj.findByName(name)
-    let updatedCompare = [...this.state.districtsToCompare, selectedDistrict]
+    let selectedDistrict = districtObj.findByName(name);
+    let compareState = [...this.state.districtsToCompare];
+    let addToCompare = [...compareState, selectedDistrict];
+    let removeCompare = addToCompare.filter( card => 
+      card.location !== selectedDistrict.location);
+    let returnCompare = [];
+    let doesStateHaveDist = compareState.includes(selectedDistrict)
     
-    if (updatedCompare.length > 2) {
-      let removedCard = updatedCompare[0];
-      this.toggleSelected(removedCard.location);
-      updatedCompare.shift()
+    if (addToCompare.length > 2 ) {
+      returnCompare = doesStateHaveDist ? removeCompare : this.shiftCompare(addToCompare);
     }
-    
-    if (updatedCompare.length === 2) {
-      districtObj.compareDistrictAverages(updatedCompare[0].location, updatedCompare[1].location) 
+    if (addToCompare.length <= 2) {
+      returnCompare = addToCompare;
     }
-    this.setState({ districtsToCompare: updatedCompare })
+
+    this.setState({ districtsToCompare: returnCompare })
   }
 
   searchForDistricts(searchTerm) {
@@ -55,12 +69,17 @@ class App extends Component {
   }
 
   render() {
+  
     return (
       <div>
         <Header searchForDistricts={ this.searchForDistricts } />
-        <CompareDisplay />
+        {this.state.districtsToCompare.length && 
+          <CompareDisplay fetchCompareObj={this.fetchCompareObj}
+                                compareArray={this.state.districtsToCompare}
+                              handleSelected={this.handleSelected}  />}
+        
         <GraphCatalog schoolDistricts={ this.state.schoolDistricts }
-                      handleSelected={ this.handleSelected } />
+                       handleSelected={ this.handleSelected } />
       </div>            
     );
   }

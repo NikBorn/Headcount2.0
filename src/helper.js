@@ -14,7 +14,7 @@ export default class DistrictRepository {
       [district2.location]: avg2,
       'compared': this.roundNumber(comparedAvg, 3)
     }
-    console.log(avgObj)
+    // console.log(avgObj)
     return avgObj;
   }
 
