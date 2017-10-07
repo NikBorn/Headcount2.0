@@ -4,7 +4,6 @@ import DistrictRepository from './helper.js';
 import Header from './components/Header.js';
 import GraphCatalog from './components/GraphCatalog.js';
 import CompareDisplay from './components/CompareDisplay.js';
-
 import kindergarten from '../data/kindergartners_in_full_day_program.js';
 
 let districtObj = new DistrictRepository(kindergarten)
@@ -33,26 +32,33 @@ class App extends Component {
     })
   }
 
+  shiftCompare(array) {
+    this.toggleSelected(array[0].location)
+    return array.filter(card => card !== array[0]);
+  }
+
   handleSelected(name) {
     this.toggleSelected(name)
-    let selectedDistrict = districtObj.findByName(name)
-    let updatedCompare = [...this.state.districtsToCompare, selectedDistrict]
+    let selectedDistrict = districtObj.findByName(name);
+    let compareState = [...this.state.districtsToCompare];
+    let addToCompare = [...compareState, selectedDistrict];
+    let removeCompare = addToCompare.filter( card => card.location !== selectedDistrict.location);
+    // let shiftCompare = addToCompare.filter(card => card !== compareState[0]);
+    let returnCompare = [];
     
-    if (updatedCompare.length > 2) {
-      let removedCard = selectedDistrict;
-      this.toggleSelected(removedCard.location);
-      console.log('updatedBefore:', updatedCompare)
-      let newCompare = updatedCompare.filter( card => card.location !== removedCard.location)
-      console.log('newCompare:', newCompare )
+    if (addToCompare.length > 2 ) {
+      console.log()
+      returnCompare = compareState.includes(selectedDistrict) ? removeCompare : this.shiftCompare(addToCompare);
+      
+      console.log(returnCompare)
     }
-    
-    if (updatedCompare.length === 2) {
-      console.log('equals 2')
-      this.setState({compareObj: districtObj.compareDistrictAverages(updatedCompare[0].location, updatedCompare[1].location)})
+
+    if (addToCompare.length <= 2) {
+      returnCompare = addToCompare;
+      console.log(returnCompare)
     }
-    console.log('setState')
-    console.log('updatedCompare: ', updatedCompare)
-    this.setState({ districtsToCompare: updatedCompare })
+
+    this.setState({ districtsToCompare: returnCompare })
   }
 
   searchForDistricts(searchTerm) {
