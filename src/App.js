@@ -3,7 +3,7 @@ import './App.css';
 import DistrictRepository from './helper.js';
 import Header from './components/Header.js';
 import GraphCatalog from './components/GraphCatalog.js';
-import CompareDisplay from './components/CompareDisplay.js'
+import CompareDisplay from './components/CompareDisplay.js';
 
 import kindergarten from '../data/kindergartners_in_full_day_program.js';
 
@@ -11,13 +11,15 @@ let districtObj = new DistrictRepository(kindergarten)
 
 class App extends Component {
   constructor() {
-    super()
+    super();
     this.state = {
       schoolDistricts: districtObj.findAllMatches(),
-      districtsToCompare: []
+      districtsToCompare: [],
+      compareObj: {}
     };
     this.searchForDistricts = this.searchForDistricts.bind(this)
     this.handleSelected = this.handleSelected.bind(this)
+    
   }
 
   toggleSelected(name) {
@@ -37,14 +39,19 @@ class App extends Component {
     let updatedCompare = [...this.state.districtsToCompare, selectedDistrict]
     
     if (updatedCompare.length > 2) {
-      let removedCard = updatedCompare[0];
+      let removedCard = selectedDistrict;
       this.toggleSelected(removedCard.location);
-      updatedCompare.shift()
+      console.log('updatedBefore:', updatedCompare)
+      let newCompare = updatedCompare.filter( card => card.location !== removedCard.location)
+      console.log('newCompare:', newCompare )
     }
     
     if (updatedCompare.length === 2) {
-      districtObj.compareDistrictAverages(updatedCompare[0].location, updatedCompare[1].location) 
+      console.log('equals 2')
+      this.setState({compareObj: districtObj.compareDistrictAverages(updatedCompare[0].location, updatedCompare[1].location)})
     }
+    console.log('setState')
+    console.log('updatedCompare: ', updatedCompare)
     this.setState({ districtsToCompare: updatedCompare })
   }
 
@@ -55,10 +62,15 @@ class App extends Component {
   }
 
   render() {
+  
     return (
       <div>
         <Header searchForDistricts={ this.searchForDistricts } />
-        <CompareDisplay />
+        {this.state.districtsToCompare.length && 
+          <CompareDisplay compareObj={this.state.compareObj}
+                        compareArray={this.state.districtsToCompare}
+                      handleSelected={this.handleSelected}  />}
+        
         <GraphCatalog schoolDistricts={ this.state.schoolDistricts }
                       handleSelected={ this.handleSelected } />
       </div>            

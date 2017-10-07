@@ -27,7 +27,7 @@ header {
 }
 
 .graph-catalog {
-  margin-top: 50px;
+  margin-top: 28px;
   width: 100vw;
   height: auto;
   display: flex;
@@ -150,4 +150,11 @@ h1 {
 
 .compare-display {
   margin-top: 40px;
+  width: 100%;
+  display: inline-block;
+}
+
+.full-compare {
+  margin-top: 40px;
+  width: 100%;
 }
