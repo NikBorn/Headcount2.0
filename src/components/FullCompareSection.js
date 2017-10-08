@@ -4,8 +4,7 @@ import CompareCard from './CompareCard.js';
 
 
 const FullCompareSection = ({ district1, district2, fetchCompareObj, handleSelected }) => {
-        // console.log()
-    return (
+  return (
         <div className='full-compare'>
             <GraphCard districtData={district1.data}
                    districtLocation={district1.location}
@@ -25,7 +24,7 @@ const FullCompareSection = ({ district1, district2, fetchCompareObj, handleSelec
                 isSelected={district2.isSelected}
             />
         </div>
-    )
-}
+    );
+};
 
 export default FullCompareSection;

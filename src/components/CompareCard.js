@@ -5,13 +5,9 @@ const CompareCard = ({ fetchCompareObj, district1, district2 }) => {
     let compareObj = fetchCompareObj(district1.location, district2.location)
     let keys = Object.keys(compareObj)
     
-    // console.log(keys)
     let graphInfo = (district) => {
-        // console.log(district)
         let keyz = Object.keys(district.data)
         let graphObj = keyz.map(key => {
-            // console.log('key: ', key)
-            // console.log('district.data[key]', district.data[key])
             return {
                 year: key,
                 data: district.data[key]
@@ -21,7 +17,7 @@ const CompareCard = ({ fetchCompareObj, district1, district2 }) => {
     } 
     console.log(graphInfo(district1))
   return(
-    <div>
+    <div className='line-chart'>
           <VictoryChart
               className='victory-chart'
               theme={VictoryTheme.material}>
@@ -47,18 +43,16 @@ const CompareCard = ({ fetchCompareObj, district1, district2 }) => {
                   data={graphInfo(district2)} x="year" y="data"
               />
           </VictoryChart>
+        <p>
+            {keys[0].toUpperCase()}: {compareObj[keys[0]]}
+        </p>  
+        <p>
+          {keys[2].toUpperCase()}: {compareObj[keys[2]]}
+        </p>     
+        <p>
+            {keys[1].toUpperCase()}: {compareObj[keys[1]]}
+        </p>  
 
-
-
-      <p>
-        {keys[0]}: {compareObj[keys[0]]} 
-      </p>
-      <p>
-        {keys[1]}: {compareObj[keys[1]]}
-      </p>
-      <p>
-        {keys[2]}: {compareObj[keys[2]]}
-      </p>
     </div>
 
   )

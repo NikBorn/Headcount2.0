@@ -1,11 +1,10 @@
 import React from 'react';
-// import ReactDOM from 'react-dom';
-// import { VictoryBar, VictoryChart, VictoryAxis, VictoryLine, VictoryTheme, VictoryTooltip } from 'victory';
 
 const GraphCard = ( { districtData, districtLocation, handleSelected, id, isSelected } ) => {
-  let keys = Object.keys(districtData)
+  let keys = Object.keys(districtData);
   let districtInfo = keys.map((key, i)=>{
-    let stylez = districtData[key] < .5 ? 'table-below' : 'table-above'
+    let stylez = districtData[key] < .5 ? 'table-below' : 'table-above';
+    
     return <div className='district-table' key={Date.now()+i}>
              <div className='table-header'>
                { key }
@@ -13,25 +12,26 @@ const GraphCard = ( { districtData, districtLocation, handleSelected, id, isSele
              <div className={ stylez }>
                { districtData[key] }
              </div>
-           </div>
-    })
-    let cardStyle = isSelected ? 'card-selected' : 'graph-card'
+           </div>;
+  });
+  let cardStyle = isSelected ? 'card-header-selected' : 'card-header';
+  
   return (
-    <div className={ cardStyle }
+    <div className='graph-card'
          key={ id }
          onClick={(e)=>{
            e.preventDefault();
            handleSelected(districtLocation);
          }}>
-      <div className='card-header'>
+      <div className={cardStyle}>
         <h4>{ districtLocation }</h4> 
       </div>
       <article>
         { districtInfo }
       </article>
     </div>
-    )
-}
+    );
+};
 
 export default GraphCard;
 
