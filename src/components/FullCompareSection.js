@@ -1,6 +1,8 @@
 import React from 'react';
 import GraphCard from './GraphCard.js';
 import CompareCard from './CompareCard.js';
+import PropTypes from 'prop-types';
+
 
 
 const FullCompareSection = ({ district1, district2, fetchCompareObj, handleSelected }) => {
@@ -26,5 +28,12 @@ const FullCompareSection = ({ district1, district2, fetchCompareObj, handleSelec
         </div>
     );
 };
+
+FullCompareSection.PropTypes = {
+  district1: PropTypes.object.isRequired,
+  district2: PropTypes.object.isRequired,
+  fetchCompareObj: PropTypes.func.isRequired,
+  handleSelected: PropTypes.func.isRequired,
+}
 
 export default FullCompareSection;

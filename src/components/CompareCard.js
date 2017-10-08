@@ -1,22 +1,25 @@
 import React from 'react';
-import { VictoryChart, VictoryLine, VictoryTheme, VictoryAxis } from 'victory'
+import { VictoryChart, VictoryLine, VictoryTheme, VictoryAxis } from 'victory';
+import PropTypes from 'prop-types';
+
 
 const CompareCard = ({ fetchCompareObj, district1, district2 }) => {
-    let compareObj = fetchCompareObj(district1.location, district2.location)
-    let keys = Object.keys(compareObj)
+  let compareObj = fetchCompareObj(district1.location, district2.location);
+  let keys = Object.keys(compareObj);
     
-    let graphInfo = (district) => {
-        let keyz = Object.keys(district.data)
-        let graphObj = keyz.map(key => {
-            return {
-                year: key,
-                data: district.data[key]
-            }
-        })  
-        return graphObj;
-    } 
-    console.log(graphInfo(district1))
-  return(
+  let graphInfo = (district) => {
+    let keyz = Object.keys(district.data);
+    let graphObj = keyz.map(key => {
+      return {
+        year: key,
+        data: district.data[key]
+      };
+    });  
+    return graphObj;
+
+  };
+
+  return (
     <div className='line-chart'>
           <VictoryChart
               className='victory-chart'
@@ -30,15 +33,15 @@ const CompareCard = ({ fetchCompareObj, district1, district2 }) => {
               />
               <VictoryLine
                   style={{
-                      data: { stroke: "#c43a31" },
-                      parent: { border: "1px solid #ccc" }
+                    data: { stroke: "#c43a31" },
+                    parent: { border: "1px solid #ccc" }
                   }}
                   data={graphInfo(district1)} x="year" y="data"
               />
               <VictoryLine
                   style={{
-                      data: { stroke: "green" },
-                      parent: { border: "1px solid #ccc" }
+                    data: { stroke: "green" },
+                    parent: { border: "1px solid #ccc" }
                   }}
                   data={graphInfo(district2)} x="year" y="data"
               />
@@ -55,8 +58,14 @@ const CompareCard = ({ fetchCompareObj, district1, district2 }) => {
 
     </div>
 
-  )
+  );
 
-}
+};
+// fetchCompareObj, district1, district2
+CompareCard.PropTypes = {
+  fetchCompareObj: PropTypes.func.isRequired,
+  district1: PropTypes.object.isRequired,
+  district2: PropTypes.object.isRequired,
+};
 
 export default CompareCard;

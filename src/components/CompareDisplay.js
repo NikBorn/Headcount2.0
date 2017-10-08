@@ -1,6 +1,8 @@
 import React from 'react';
 import GraphCard from './GraphCard.js';
 import FullCompareSection from './FullCompareSection.js';
+import PropTypes from 'prop-types';
+
 
 const CompareDisplay = ({ compareArray, fetchCompareObj, handleSelected} ) => {
   let dist1 = compareArray[0];
@@ -32,5 +34,11 @@ const CompareDisplay = ({ compareArray, fetchCompareObj, handleSelected} ) => {
       </div>
   );
 };
+
+CompareDisplay.PropTypes = {
+  compareArray: PropTypes.arrayOf(PropTypes.object).isRequired,
+  fetchCompareObj: PropTypes.func.isRequired,
+  handleSelected: PropTypes.func.isRequired,
+}
 
 export default CompareDisplay;
