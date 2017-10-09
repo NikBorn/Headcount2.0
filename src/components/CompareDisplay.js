@@ -8,7 +8,7 @@ const CompareDisplay = ({ compareArray, fetchCompareObj, handleSelected} ) => {
   let dist1 = compareArray[0];
   let dist2 = compareArray[1];
 
-
+  console.log('Data: ', dist1.data)
   return (
       <div className='compare-display'>
       

@@ -19,6 +19,7 @@ class App extends Component {
     this.searchForDistricts = this.searchForDistricts.bind(this);
     this.handleSelected = this.handleSelected.bind(this);
     this.fetchCompareObj = this.fetchCompareObj.bind(this);
+    this.changeData = this.changeData.bind(this);
   }
 
   fetchCompareObj(dist1, dist2) {
@@ -67,11 +68,16 @@ class App extends Component {
     });
   }
 
+  changeData() {
+    console.log('clicked!')
+  }
+
   render() {
   
     return (
       <div>
-        <Header searchForDistricts={ this.searchForDistricts } />
+        <Header searchForDistricts={ this.searchForDistricts } 
+                        changeData={this.changeData}/>
         <div className='space-holder'>
         </div>
         {this.state.districtsToCompare.length && 

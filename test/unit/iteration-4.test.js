@@ -1,5 +1,7 @@
 import DistrictRepository from '../../src/helper.js';
 import kinderData from '../../data/kindergartners_in_full_day_program.js';
+import Adapter from 'enzyme-adapter-react-15';
+import config from '../setup.js';
 
 describe('DistrictRepository iteration 0', () =>  {
   const district = new DistrictRepository(kinderData);
