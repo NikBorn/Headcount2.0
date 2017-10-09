@@ -22,6 +22,8 @@ const CompareCard = ({ fetchCompareObj, district1, district2 }) => {
   return (
     <div className='line-chart'>
           <VictoryChart
+              width={700} 
+              height={450}
               className='victory-chart'
               theme={VictoryTheme.material}>
               <VictoryAxis
@@ -29,30 +31,32 @@ const CompareCard = ({ fetchCompareObj, district1, district2 }) => {
                   tickFormat={["'04", "'06", "'08", "'10", "'12", "'14"]} />
               <VictoryAxis
                   dependentAxis
-                  tickValues={[0, .2, .4, .7, .8, 1]}
+                  tickValues={[0, .25, .5, .75, 1]}
               />
               <VictoryLine
                   style={{
-                    data: { stroke: "#c43a31" },
+                    data: { stroke: "#2A8CED" },
                     parent: { border: "1px solid #ccc" }
                   }}
                   data={graphInfo(district1)} x="year" y="data"
               />
               <VictoryLine
                   style={{
-                    data: { stroke: "green" },
+                    data: { stroke: "#F9830D" },
                     parent: { border: "1px solid #ccc" }
                   }}
                   data={graphInfo(district2)} x="year" y="data"
               />
           </VictoryChart>
-        <p>
+        <p className='dist1-compare'>
             {keys[0].toUpperCase()}: {compareObj[keys[0]]}
         </p>  
         <p>
+         
           {keys[2].toUpperCase()}: {compareObj[keys[2]]}
+         
         </p>     
-        <p>
+        <p className='dist2-compare'>
             {keys[1].toUpperCase()}: {compareObj[keys[1]]}
         </p>  
 
@@ -61,11 +65,11 @@ const CompareCard = ({ fetchCompareObj, district1, district2 }) => {
   );
 
 };
-// fetchCompareObj, district1, district2
+
 CompareCard.PropTypes = {
   fetchCompareObj: PropTypes.func.isRequired,
   district1: PropTypes.object.isRequired,
-  district2: PropTypes.object.isRequired,
+  district2: PropTypes.object.isRequired
 };
 
 export default CompareCard;

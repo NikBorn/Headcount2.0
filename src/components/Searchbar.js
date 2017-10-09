@@ -9,7 +9,7 @@ export default class Searchbar extends Component {
   }
 
   handleChange(string) {
-    this.setState({ value: string }, ()=>{this.props.searchForDistricts(this.state.value)})
+    this.setState({ value: string }, ()=>{ this.props.searchForDistricts(this.state.value) ;});
   }
 
   render(props) {
@@ -19,12 +19,12 @@ export default class Searchbar extends Component {
                placeholder='search by district'
                value={this.state.value}
                onChange={(e)=>{
-                 this.handleChange(e.target.value)
+                 this.handleChange(e.target.value);
                }} />
       
     );
   }
-};
+}
 
 // const Searchbar = ({ searchForDistricts }) => {
 //   return (

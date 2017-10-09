@@ -1,13 +1,13 @@
 import React from 'react';
-import GraphCard from './GraphCard.js';
+import DistrictCard from './DistrictCard.js';
 import PropTypes from 'prop-types';
 
 
-const GraphCatalog = ( { schoolDistricts, handleSelected } ) => {
+const CardCatalog = ( { schoolDistricts, handleSelected } ) => {
 
   let districtGraphs = schoolDistricts.map( district =>{
     return (
-      <GraphCard districtData={ district.data } 
+      <DistrictCard districtData={ district.data } 
                  districtLocation={ district.location }
                  handleSelected={ handleSelected }
                  id={ district.id } 
@@ -24,9 +24,9 @@ const GraphCatalog = ( { schoolDistricts, handleSelected } ) => {
   );
 };
 
-GraphCatalog.PropTypes = {
+CardCatalog.PropTypes = {
   schoolDistricts: PropTypes.arrayOf(PropTypes.object).isRequired,
   handleSelected: PropTypes.func.isRequired
-}
+};
 
-export default GraphCatalog;
+export default CardCatalog;
