@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import DistrictRepository from './helper.js';
 import Header from './components/Header.js';
-import GraphCatalog from './components/GraphCatalog.js';
+import CardCatalog from './components/CardCatalog.js';
 import CompareDisplay from './components/CompareDisplay.js';
 import kindergarten from '../data/kindergartners_in_full_day_program.js';
 
@@ -19,7 +19,6 @@ class App extends Component {
     this.searchForDistricts = this.searchForDistricts.bind(this);
     this.handleSelected = this.handleSelected.bind(this);
     this.fetchCompareObj = this.fetchCompareObj.bind(this);
-    this.changeData = this.changeData.bind(this);
   }
 
   fetchCompareObj(dist1, dist2) {
@@ -68,16 +67,13 @@ class App extends Component {
     });
   }
 
-  changeData() {
-    console.log('clicked!')
-  }
+ 
 
   render() {
   
     return (
       <div>
-        <Header searchForDistricts={ this.searchForDistricts } 
-                        changeData={this.changeData}/>
+        <Header searchForDistricts={ this.searchForDistricts } />
         <div className='space-holder'>
         </div>
         {this.state.districtsToCompare.length && 
@@ -85,7 +81,7 @@ class App extends Component {
                                 compareArray={this.state.districtsToCompare}
                               handleSelected={this.handleSelected}  />}
         
-        <GraphCatalog schoolDistricts={ this.state.schoolDistricts }
+        <CardCatalog schoolDistricts={ this.state.schoolDistricts }
                        handleSelected={ this.handleSelected } />
       </div>            
     );

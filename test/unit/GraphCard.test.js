@@ -1,10 +1,10 @@
 import React from 'react';
-import GraphCard from '../../src/components/GraphCard.js';
+import DistrictCard from '../../src/components/DistrictCard.js';
 import Adapter from 'enzyme-adapter-react-15';
 import config from '../setup.js';
 import { mount, shallow } from 'enzyme';
 
-describe('GraphCard', () => {
+describe('DistrictCard', () => {
   let mockFunc;
   let wrapper; 
   let shallowWrapper;
@@ -32,7 +32,7 @@ describe('GraphCard', () => {
 
   beforeAll(() => {
     mockFunc = jest.fn();
-    // shallowWrapper = shallow(<GraphCard districtData={district.data}
+    // shallowWrapper = shallow(<DistrictCard districtData={district.data}
     //   districtLocation={district.location}
     //   handleSelected={mockFunc}
     //   id={district.id}
@@ -40,7 +40,7 @@ describe('GraphCard', () => {
     //   isSelected={district.isSelected}
     // />);
     
-    wrapper = mount(<GraphCard districtData={district.data}
+    wrapper = mount(<DistrictCard districtData={district.data}
                            districtLocation={district.location}
                              handleSelected={mockFunc}
                                          id={district.id}
@@ -50,15 +50,14 @@ describe('GraphCard', () => {
   });
 
   test('should exist', () => {
-    // console.log(shallowWrapper.debug())
     expect(wrapper).toBeDefined();
   });
 
   test('should set the state by calling handleSelected', () => {
     
-    wrapper.simulate('click')
+    wrapper.simulate('click');
    
-    expect(wrapper.instance().props.handleSelected).toHaveBeenCalled()
+    expect(wrapper.instance().props.handleSelected).toHaveBeenCalled();
   });
 
 

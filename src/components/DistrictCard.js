@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const GraphCard = ( { districtData, districtLocation, handleSelected, id, isSelected } ) => {
+const DistrictCard = ( { districtData, districtLocation, handleSelected, id, isSelected } ) => {
   let keys = Object.keys(districtData);
   let districtInfo = keys.map((key, i)=>{
     let stylez = districtData[key] < .5 ? 'table-below' : 'table-above';
@@ -20,8 +20,8 @@ const GraphCard = ( { districtData, districtLocation, handleSelected, id, isSele
   return (
     <div className='graph-card'
          key={ id }
-         onClick={(e)=>{
-           e.preventDefault();
+         onClick={(event)=>{
+           event.preventDefault();
            handleSelected(districtLocation);
          }}>
       <div className={cardStyle}>
@@ -34,12 +34,12 @@ const GraphCard = ( { districtData, districtLocation, handleSelected, id, isSele
     );
 };
 
-GraphCard.propTypes = {
+DistrictCard.propTypes = {
   districtData: PropTypes.object.isRequired,
   districtLocation: PropTypes.string.isRequired,
   handleSelected: PropTypes.func.isRequired,
   id: PropTypes.number.isRequired,
   isSelected: PropTypes.bool.isRequired,
 }
-export default GraphCard;
+export default DistrictCard;
 

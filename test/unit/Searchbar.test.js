@@ -17,8 +17,6 @@ describe('Searchbar', () => {
   });
     
   test('should exist', () => {
-    // console.log(shallowWrapper.debug());
-    // console.log(wrapper.debug())
     expect(wrapper).toBeDefined();
   });
 

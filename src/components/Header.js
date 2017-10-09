@@ -14,6 +14,6 @@ const Header = ({ searchForDistricts }) => {
 
 Header.PropTypes = {
   searchForDistricts: PropTypes.func.isRequired
-}
+};
 
 export default Header;
