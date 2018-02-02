@@ -7,13 +7,10 @@ import { shallow, mount } from 'enzyme';
 describe('Searchbar', () => {
   let mockFunc;
   let wrapper; 
-  // let shallowWrapper;
-
 
   beforeAll(() => {
     mockFunc = jest.fn();
     wrapper = mount(<Searchbar searchForDistricts={mockFunc} />);
-    // shallowWrapper = shallow(<Searchbar searchForDistricts={mockFunc} />);
   });
     
   test('should exist', () => {
@@ -27,7 +24,5 @@ describe('Searchbar', () => {
 
     expect(wrapper.instance().props.searchForDistricts).toHaveBeenCalled();
   });
-
-
 
 });

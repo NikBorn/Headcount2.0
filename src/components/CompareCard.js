@@ -66,7 +66,7 @@ const CompareCard = ({ fetchCompareObj, district1, district2 }) => {
 
 };
 
-CompareCard.PropTypes = {
+CompareCard.propTypes = {
   fetchCompareObj: PropTypes.func.isRequired,
   district1: PropTypes.object.isRequired,
   district2: PropTypes.object.isRequired

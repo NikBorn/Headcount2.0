@@ -2,7 +2,6 @@ import React from 'react';
 import Searchbar from './Searchbar.js';
 import PropTypes from 'prop-types';
 
-
 const Header = ({ searchForDistricts }) => {
   return (
     <header className='header'>
@@ -12,7 +11,7 @@ const Header = ({ searchForDistricts }) => {
   );
 };
 
-Header.PropTypes = {
+Header.propTypes = {
   searchForDistricts: PropTypes.func.isRequired
 };
 

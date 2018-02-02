@@ -1,12 +1,7 @@
 import React from 'react';
 import App from '../../src/App.js';
-import Header from '../../src/components/Header.js';
-import CardCatalog from '../../src/components/CardCatalog.js';
-import CompareDisplay from '../../src/components/CompareDisplay.js';
-import DistrictCard from '../../src/components/DistrictCard.js';
 import Adapter from 'enzyme-adapter-react-15';
 import config from '../setup.js';
-import kindergarten from '../../data/kindergartners_in_full_day_program.js';
 import { mount } from 'enzyme';
 
 describe('app', () => {

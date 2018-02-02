@@ -2,7 +2,7 @@ import React from 'react';
 import DistrictCard from '../../src/components/DistrictCard.js';
 import Adapter from 'enzyme-adapter-react-15';
 import config from '../setup.js';
-import { mount, shallow } from 'enzyme';
+import { mount } from 'enzyme';
 
 describe('DistrictCard', () => {
   let mockFunc;
