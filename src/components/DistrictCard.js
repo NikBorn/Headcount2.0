@@ -1,12 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const DistrictCard = ( { districtData, districtLocation, handleSelected, id, isSelected } ) => {
+const DistrictCard = ( 
+  { districtData, districtLocation, handleSelected, id, isSelected } ) => {
   let keys = Object.keys(districtData);
-  let districtInfo = keys.map((key, i)=>{
+  let districtInfo = keys.map((key, index)=>{
     let stylez = districtData[key] < .5 ? 'table-below' : 'table-above';
     
-    return <div className='district-table' key={Date.now()+i}>
+    return <div className='district-table' key={Date.now()+index}>
              <div className='table-header'>
                { key }
              </div>
@@ -39,7 +40,8 @@ DistrictCard.propTypes = {
   districtLocation: PropTypes.string.isRequired,
   handleSelected: PropTypes.func.isRequired,
   id: PropTypes.number.isRequired,
-  isSelected: PropTypes.bool.isRequired,
-}
+  isSelected: PropTypes.bool.isRequired
+};
+
 export default DistrictCard;
 

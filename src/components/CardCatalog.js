@@ -2,7 +2,6 @@ import React from 'react';
 import DistrictCard from './DistrictCard.js';
 import PropTypes from 'prop-types';
 
-
 const CardCatalog = ( { schoolDistricts, handleSelected } ) => {
 
   let districtGraphs = schoolDistricts.map( district =>{
@@ -24,7 +23,7 @@ const CardCatalog = ( { schoolDistricts, handleSelected } ) => {
   );
 };
 
-CardCatalog.PropTypes = {
+CardCatalog.propTypes = {
   schoolDistricts: PropTypes.arrayOf(PropTypes.object).isRequired,
   handleSelected: PropTypes.func.isRequired
 };

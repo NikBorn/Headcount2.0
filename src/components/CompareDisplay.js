@@ -34,7 +34,7 @@ const CompareDisplay = ({ compareArray, fetchCompareObj, handleSelected} ) => {
   );
 };
 
-CompareDisplay.PropTypes = {
+CompareDisplay.propTypes = {
   compareArray: PropTypes.arrayOf(PropTypes.object).isRequired,
   fetchCompareObj: PropTypes.func.isRequired,
   handleSelected: PropTypes.func.isRequired

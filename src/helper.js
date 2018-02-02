@@ -31,16 +31,17 @@ export default class DistrictRepository {
   }
 
   createDataObj(array) {
-    return array.reduce((accu, current, i) => {
+    return array.reduce((accu, current, index) => {
       if (!accu[current.Location]) {
         accu[current.Location] = {
           location: current.Location.toUpperCase(), 
           data: {},
-          id: Date.now()+i,
+          id: Date.now()+index,
           isSelected: false         
         };
       }
-      accu[current.Location].data[current.TimeFrame] = this.roundNumber(current.Data, 3);
+      accu[current.Location].data[current.TimeFrame] = 
+      this.roundNumber(current.Data, 3);
       return accu;
     }, {});        
   }
@@ -49,7 +50,10 @@ export default class DistrictRepository {
     let keys = Object.keys(this.data);        
     let possibleMatches = keys.map(district => this.data[district]);
     if (searchName) {
-      return possibleMatches.filter(match => match.location.includes(searchName.toUpperCase()));
+      return (
+        possibleMatches.filter(match => 
+          match.location.includes(searchName.toUpperCase()))
+      );
     }
     return possibleMatches;
   }
@@ -57,7 +61,8 @@ export default class DistrictRepository {
   findByName(searchName) {
     if (searchName) {
       let keys = Object.keys(this.data);
-      let found = keys.find(location => location.toUpperCase() === searchName.toUpperCase());
+      let found = keys.find(
+        location => location.toUpperCase() === searchName.toUpperCase());
       return this.data[found];
     }
   }

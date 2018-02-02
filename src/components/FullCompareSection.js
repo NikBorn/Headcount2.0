@@ -5,7 +5,8 @@ import PropTypes from 'prop-types';
 
 
 
-const FullCompareSection = ({ district1, district2, fetchCompareObj, handleSelected }) => {
+const FullCompareSection = ({ 
+  district1, district2, fetchCompareObj, handleSelected }) => {
   return (
         <div className='full-compare'>
             <DistrictCard districtData={district1.data}
@@ -29,11 +30,11 @@ const FullCompareSection = ({ district1, district2, fetchCompareObj, handleSelec
     );
 };
 
-FullCompareSection.PropTypes = {
+FullCompareSection.propTypes = {
   district1: PropTypes.object.isRequired,
   district2: PropTypes.object.isRequired,
   fetchCompareObj: PropTypes.func.isRequired,
-  handleSelected: PropTypes.func.isRequired,
-}
+  handleSelected: PropTypes.func.isRequired
+};
 
 export default FullCompareSection;

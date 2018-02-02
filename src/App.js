@@ -52,7 +52,8 @@ class App extends Component {
     let doesStateHaveDist = compareState.includes(selectedDistrict);
     
     if (addToCompare.length > 2 ) {
-      returnCompare = doesStateHaveDist ? removeCompare : this.shiftCompare(addToCompare);
+      returnCompare = 
+      doesStateHaveDist ? removeCompare : this.shiftCompare(addToCompare);
     }
     if (addToCompare.length <= 2) {
       returnCompare = doesStateHaveDist ? removeCompare : addToCompare;

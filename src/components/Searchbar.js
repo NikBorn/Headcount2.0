@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 export default class Searchbar extends Component {
   constructor() {
@@ -9,7 +10,8 @@ export default class Searchbar extends Component {
   }
 
   handleChange(string) {
-    this.setState({ value: string }, ()=>{ this.props.searchForDistricts(this.state.value) ;});
+    this.setState({ value: string }, 
+      ()=>{ this.props.searchForDistricts(this.state.value) ; });
   }
 
   render(props) {
@@ -18,25 +20,14 @@ export default class Searchbar extends Component {
         <input className='search-bar'
                placeholder='search by district'
                value={this.state.value}
-               onChange={(e)=>{
-                 this.handleChange(e.target.value);
+               onChange={(event)=>{
+                 this.handleChange(event.target.value);
                }} />
       
     );
   }
 }
 
-// const Searchbar = ({ searchForDistricts }) => {
-//   return (
-    
-//       <input className='search-bar'
-//              placeholder='search by district'
-//              onChange={(e)=>{
-//                e.preventDefault();
-//                searchForDistricts(e.target.value)
-//              }} />
-    
-//   );
-// }
-
-// export default Searchbar;
+Searchbar.propTypes = {
+  searchForDistricts: PropTypes.func.isRequired
+};
