@@ -4,7 +4,7 @@ import DistrictRepository from './helper.js';
 import Header from './components/Header.js';
 import CardCatalog from './components/CardCatalog.js';
 import CompareDisplay from './components/CompareDisplay.js';
-import kindergarten from '../data/kindergartners_in_full_day_program.js';
+import kindergarten from './data/kindergartners_in_full_day_program.js';
 
 let districtObj = new DistrictRepository(kindergarten);
 
